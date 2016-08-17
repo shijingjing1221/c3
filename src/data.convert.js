@@ -90,9 +90,9 @@ c3_chart_internal_fn.convertRowsToData = function (rows) {
     for (i = 1; i < rows.length; i++) {
         new_row = {};
         for (j = 0; j < rows[i].length; j++) {
-            if (isUndefined(rows[i][j])) {
-                throw new Error("Source data is missing a component at (" + i + "," + j + ")!");
-            }
+            // if (isUndefined(rows[i][j])) {
+            //     throw new Error("Source data is missing a component at (" + i + "," + j + ")!");
+            // }
             new_row[keys[j]] = rows[i][j];
         }
         new_rows.push(new_row);
