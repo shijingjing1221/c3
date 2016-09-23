@@ -3,7 +3,7 @@
 
     /*global define, module, exports, require */
 
-    var c3 = { version: "0.4.11" };
+    var c3 = { version: "0.4.11-rc4" };
 
     var c3_chart_fn,
         c3_chart_internal_fn,
@@ -2118,9 +2118,9 @@
         for (i = 1; i < rows.length; i++) {
             new_row = {};
             for (j = 0; j < rows[i].length; j++) {
-                // if (isUndefined(rows[i][j])) {
-                //     throw new Error("Source data is missing a component at (" + i + "," + j + ")!");
-                // }
+                if (isUndefined(rows[i][j])) {
+                    throw new Error("Source data is missing a component at (" + i + "," + j + ")!");
+                }
                 new_row[keys[j]] = rows[i][j];
             }
             new_rows.push(new_row);
@@ -8190,7 +8190,13 @@
     }());
 
     /* jshint ignore:end */
-    window.c3 = c3;
-    
+
+    if (typeof define === 'function' && define.amd) {
+        define("c3", ["d3"], function () { return c3; });
+    } else if ('undefined' !== typeof exports && 'undefined' !== typeof module) {
+        module.exports = c3;
+    } else {
+        window.c3 = c3;
+    }
 
 })(window);
