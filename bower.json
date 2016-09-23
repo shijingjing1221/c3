@@ -26,6 +26,6 @@
     "Gruntfile.*"
   ],
   "dependencies": {
-    "d3": "shijingjing1221/d3#1.0.0"
+    "d3": "shijingjing1221/d3#1.0.1"
   }
 }
